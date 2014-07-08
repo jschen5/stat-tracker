@@ -1,5 +1,10 @@
 StatTracker::Application.routes.draw do
   devise_for :users
+
+  #USERS
+  post '/users', to: 'users#create'
+  put '/users/:type/:id/:token', to: 'users#set_complete'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -54,4 +59,6 @@ StatTracker::Application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+
+  
 end
