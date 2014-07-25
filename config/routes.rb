@@ -2,7 +2,8 @@ StatTracker::Application.routes.draw do
   devise_for :users
 
   #USERS
-  post '/users/login', to: 'users#login'
+  post '/users', to: 'users#create'
+  put '/users/:type/:id/:token', to: 'users#set_complete'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

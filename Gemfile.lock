@@ -38,12 +38,11 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.7.0)
-    devise (3.2.3)
+    devise (3.0.0.rc)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 3.2.6, < 5)
-      thread_safe (~> 0.1)
-      warden (~> 1.2.3)
+      warden (~> 1.2.1)
     erubis (2.7.0)
     execjs (2.0.2)
     hike (1.2.3)
@@ -64,6 +63,8 @@ GEM
     orm_adapter (0.5.0)
     pg (0.17.1)
     polyglot (0.3.3)
+    protected_attributes (1.0.8)
+      activemodel (>= 4.0.1, < 5.0)
     rack (1.5.2)
     rack-test (0.6.2)
       rack (>= 1.0)
@@ -126,6 +127,7 @@ DEPENDENCIES
   jbuilder (~> 1.2)
   jquery-rails
   pg
+  protected_attributes
   rails (= 4.0.2)
   sass-rails (~> 4.0.0)
   sdoc
