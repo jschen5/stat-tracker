@@ -16,6 +16,7 @@ class UserController < ApplicationController
     end
     user.set_registration_complete
     # redirect to home page or registration success page
+    redirect_to :home=>'home'
   end
 
 end
