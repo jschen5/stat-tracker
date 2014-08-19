@@ -19,4 +19,12 @@ class UserController < ApplicationController
     redirect_to :home=>'home'
   end
 
+  def login
+
+  end
+
+  def authenticate(email)
+    user = 
+  end
+
 end
