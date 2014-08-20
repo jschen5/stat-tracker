@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   # TODO: add before filters, and also render json in actions
-
+  before_filter :try_cookie_login, :require_login
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   # Prevent CSRF attacks by raising an exception.
@@ -17,4 +17,6 @@ class ApplicationController < ActionController::Base
   def need_type
 
   end
+
+  
 end

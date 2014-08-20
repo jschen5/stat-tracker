@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  attr_accessible :email, :registration_complete
+  attr_accessible :email, :registration_complete, :username
 
   def set_registration_complete
     self.registration_complete = true
