@@ -27,7 +27,7 @@ class UserController < ApplicationController
       if !auth
         render json: {success: false, message: 'Incorrect password.'}
       else
-        sign_in user.email, :event=>:authentication
+        sign_in user, :event=>:authentication
         cookies.permanent.signed[:user_c] = user.id
         render json: {
           success: auth,
