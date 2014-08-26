@@ -1,4 +1,4 @@
-class UserController < ApplicationController
+class UsersController < ApplicationController
 
   require 'json'
 
@@ -17,17 +17,17 @@ class UserController < ApplicationController
 
   def login
     user = User.find_by_email(params[:email])
-    if !user
+    if user.nil?
       render json: {success: false, message: 'User with email "#{params[:email]}" does not exist.'}
     elsif !user.registration_complete
       #eventually check if registration link on email still valid (ie. not yet expired)
       render json: {success: false, message: 'Please click the link on the registration email.'}
     else
-      auth = authenticate(user)
+      auth = authenticate(user, params[:password])
       if !auth
         render json: {success: false, message: 'Incorrect password.'}
       else
-        sign_in user, :event=>:authentication
+        sign_in user
         cookies.permanent.signed[:user_c] = user.id
         render json: {
           success: auth,
@@ -39,8 +39,8 @@ class UserController < ApplicationController
     end
   end
 
-  def authenticate(user)
-    user.valid_password?(user.password)
+  def authenticate(user, password)
+    user.valid_password?(password)
   end
 
 end
