@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::Base
   # TODO: add before filters, and also render json in actions
-  # before_filter :try_cookie_login, :require_login
-  before_filter :authenticate_user!
+  before_filter :try_cookie_login, :require_login
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   # Prevent CSRF attacks by raising an exception.
@@ -16,8 +15,8 @@ class ApplicationController < ActionController::Base
   end
 
   def try_cookie_login
-    if not user_signed_in? and cookies.permanent.signed[:user_c]
-      user_id = cookies.permanent.signed[:user_c]
+    if not user_signed_in? and cookies.signed[:user_c]
+      user_id = cookies.signed[:user_c]
       user = User.find(user_id)
       sign_in user if user
     end

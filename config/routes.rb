@@ -5,6 +5,7 @@ StatTracker::Application.routes.draw do
   post '/users', to: 'users#create'
   put '/users/:type/:id/:token', to: 'users#set_complete'
   post '/users/login', to: 'users#login'
+  get '/users/verify', to: 'users#verify'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

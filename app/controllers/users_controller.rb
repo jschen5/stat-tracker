@@ -32,8 +32,11 @@ class UsersController < ApplicationController
         render json: {
           success: auth,
           message: 'You are now logged in as #{user.username}.',
-          name: user.username,
-          email: user.email
+          user: {
+            id: user.id,
+            name: user.username,
+            email: user.email
+          }
         }
       end
     end
@@ -41,6 +44,20 @@ class UsersController < ApplicationController
 
   def authenticate(user, password)
     user.valid_password?(password)
+  end
+
+  def verify
+    signed_in = user_signed_in?
+    id = (signed_in) ? current_user.id : ""
+    username = (signed_in) ? current_user.username : ""
+    email = (signed_in) ? current_user.email : ""
+
+    render json: {
+      success: signed_in,
+      id: id,
+      username: username,
+      email: email
+    }
   end
 
 end
