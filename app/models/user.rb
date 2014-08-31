@@ -1,13 +1,9 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
+  devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  attr_accessible :email, :registration_complete, :username
-
-  def set_registration_complete
-    self.registration_complete = true
-  end
+  attr_accessible :email, :registration_complete, :username, :password
 
 end

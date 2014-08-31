@@ -1,2 +1,0 @@
-class StudentController < UserController
-end
