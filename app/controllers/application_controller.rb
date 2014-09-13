@@ -1,10 +1,11 @@
 class ApplicationController < ActionController::Base
 
-  # respond_to :html, :json
+  require 'json'
+
   # protect_from_forgery
 
   # TODO: add before filters, and also render json in actions
-  # before_filter :try_cookie_login, :require_login
+  before_filter :try_cookie_login
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   # after_filter :set_csrf_cookie_for_ng
@@ -17,6 +18,14 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:username, :email, :password, :password_confirmation) }
     devise_parameter_sanitizer.for(:sign_in) { |u| u.permit(:email, :password) }
+  end
+
+  def try_cookie_login
+    user_id = cookies.signed[:user_c]
+    if !user_id.nil?
+      user = User.find(user_id)
+      sign_in user
+    end
   end
 
 end

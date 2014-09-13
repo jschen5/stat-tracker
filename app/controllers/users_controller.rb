@@ -1,8 +1,22 @@
 class UsersController < ApplicationController
 
-  before_filter :authenticate_user!
-
   require 'json'
 
+  def get_current_user
+    if user_signed_in?
+      render json: {
+        success: true,
+        user: {
+          id: current_user.id,
+          email: current_user.email,
+          username: current_user.username,
+        }
+      }
+    else
+      render json: {
+        success: false
+      }
+    end
+  end
 
 end
