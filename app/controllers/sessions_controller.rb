@@ -3,7 +3,7 @@ class SessionsController < Devise::SessionsController
   # POST /resource/sign_in
   def create
     super
-    if !cookies.signed[:user_c] and params[:user][:remember] and user_signed_in?
+    if !cookies.signed[:user_c].nil? and !params[:user][:remember].nil? and user_signed_in?
       cookies.signed[:user_c] = { value: current_user.id, expires: 90.days.from_now }
     end
   end
@@ -11,6 +11,8 @@ class SessionsController < Devise::SessionsController
   # GET /resource/sign_out
   def destroy
     super
-    cookies.signed[:user_c] = nil
+    if !cookies.signed[:user_c].nil?
+      cookies.delete :user_c
+    end
   end
 end

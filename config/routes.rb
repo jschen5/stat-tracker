@@ -1,11 +1,10 @@
 StatTracker::Application.routes.draw do
 
+  root to: 'home#index'
+
   devise_for :users, :controllers => {confirmations: 'confirmations', sessions: 'sessions'}
 
   #USERS
-  # post '/users', to: 'users#create'
-  # put '/users/:type/:id/:token', to: 'users#set_complete'
-  # post '/users/login', to: 'users#login'
   get '/users/current', to: 'users#get_current_user'
 
   # The priority is based upon order of creation: first created -> highest priority.
