@@ -1,0 +1,30 @@
+use decision tree
+eg.
+                          note?
+                          /   \
+                         /     \
+                        /       \
+                    filled?      \
+                     /  \         \
+                    /    \         \
+                   /      \         \
+                  /      stem?       \
+                 /        /  \        \
+              tail?      /    \        \
+              /  \     half    \        \
+             /    \           whole      \
+            /      \                      \
+          #tails   \                    rest?
+            .        \                   /   \
+            .         \                 /     \
+            .      quarter            type     \
+                                       .        \
+                                       .      accidental?
+                                       .      /        \
+                                             /          \
+                                           type        other notation?
+                                            .               .
+                                            .               .
+                                            .               .
+
+* At each step, use image recognition (LDA)
