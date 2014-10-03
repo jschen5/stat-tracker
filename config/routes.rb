@@ -1,4 +1,4 @@
-StatTracker::Application.routes.draw do
+Vivace::Application.routes.draw do
 
   root to: 'home#index'
 

@@ -1,3 +1,4 @@
 [submodule "stat-tracker-frontend"]
 	path = stat-tracker-frontend
 	url = git@github.com:jschen5/stat-tracker-frontend.git
+        ignore = dirty
