@@ -7,6 +7,9 @@ Vivace::Application.routes.draw do
   #USERS
   get '/users/current', to: 'users#get_current_user'
 
+  #STORIES
+  post '/stories', to: 'stories#create'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
