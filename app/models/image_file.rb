@@ -4,7 +4,7 @@ class ImageFile < ActiveRecord::Base
 
   has_one :file_object, :as => :derived_file
 
-  after_initialize :create_file_object
+  after_create :create_file_object
 
   def initialize(attributes=nil, options={})
     @file = attributes
