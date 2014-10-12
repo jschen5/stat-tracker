@@ -3,7 +3,6 @@ class UsersController < ApplicationController
   require 'json'
 
   def get_current_user
-    puts user_signed_in?
     if user_signed_in?
       render json: {
         success: true,

@@ -1,5 +1,7 @@
 class StoriesController < ApplicationController
 
+  before_filter :require_login, :only => [:create]
+
   def create
     file_obj = params[:file]
     ImageFile.create({

@@ -6,4 +6,6 @@ class User < ActiveRecord::Base
 
   attr_accessible :email, :registration_complete, :username, :password, :password_confirmation
 
+  has_many :file_objects
+
 end

@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
 
   require 'json'
+  require 'uri'
 
   # protect_from_forgery
 
@@ -25,6 +26,12 @@ class ApplicationController < ActionController::Base
     if !user_id.nil?
       user = User.find(user_id)
       sign_in user
+    end
+  end
+
+  def require_login
+    unless !user_signed_in?
+      render :unauthorized
     end
   end
 
