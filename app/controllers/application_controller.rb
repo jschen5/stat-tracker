@@ -30,8 +30,8 @@ class ApplicationController < ActionController::Base
   end
 
   def require_login
-    unless !user_signed_in?
-      render :unauthorized
+    unless user_signed_in?
+      render :nothing => true, :status => :unauthorized
     end
   end
 
